@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b868fb1c2a09614c84b7142ab03340ed8eed3ac4">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/instant-run_4a8560f48ae48698224c6f9f2dfa67834092183a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_cd62839a5f13595c2d77bfad8d53fa2a88e42c97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-v4-24.2.1_2d1444ab61606a3df30cdb91eee0f756dfd96a74.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/internal_impl-24.2.1_914b34dff488c6a6053b44503df430ef9dce4460.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_914b34dff488c6a6053b44503df430ef9dce4460.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-core-utils-24.2.1_db585a84ceac3414c4dea26fbdd272c3f5f13f92.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-compat-24.2.1_0d431ca0544f0497f913654129abb2739ebc1265.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d47c53d8d3d7ed2e972a7165dfc05f3f807e884d">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_fbcba0316d01485d1876fa570e4726584bf2b73b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_cb4e28c962a1ca99b79f53adb63b9fbd0e512ce7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/internal_impl-24.2.1_cd62839a5f13595c2d77bfad8d53fa2a88e42c97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-fragment-24.2.1_d669488226e29a8e8860267a1d542de67160130f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-vector-drawable-24.2.1_b17e52b41851d549bb59baed9952cdc2e1d44b01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/internal_impl-24.2.1_cb4e28c962a1ca99b79f53adb63b9fbd0e512ce7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_d669488226e29a8e8860267a1d542de67160130f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/support-annotations-24.2.1_c50a48bdb76b448a5729153ed1299580a8585777.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_2d1444ab61606a3df30cdb91eee0f756dfd96a74.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-appcompat-v7-24.2.1_6960524af504acddce7dfbcaf56da8e8575ada19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-media-compat-24.2.1_1b45b8593f3a6b43f891673eeb268870b31f1bf8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-recyclerview-v7-24.2.1_eb1e2a14037cc5f759e577409b118e5f351e185e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_6960524af504acddce7dfbcaf56da8e8575ada19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_d144fea0bbc0f4d785766553fc56a6b9a71f63d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_fe3170bdb04b4fad96e18326032653ca17b4bfa7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_1b45b8593f3a6b43f891673eeb268870b31f1bf8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_eb1e2a14037cc5f759e577409b118e5f351e185e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/internal_impl-24.2.1_fe78fd3368d62be16cdeb2c93a71f9326162371b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_b17e52b41851d549bb59baed9952cdc2e1d44b01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/internal_impl-24.2.1_d144fea0bbc0f4d785766553fc56a6b9a71f63d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_a02f4025f5f7a052177f4b94a9f81f77c4687d48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-animated-vector-drawable-24.2.1_a02f4025f5f7a052177f4b94a9f81f77c4687d48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_c50a48bdb76b448a5729153ed1299580a8585777.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_0d431ca0544f0497f913654129abb2739ebc1265.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_db585a84ceac3414c4dea26fbdd272c3f5f13f92.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_fe78fd3368d62be16cdeb2c93a71f9326162371b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-design-24.2.1_1a317f35b1b0b616ec1ab95ee0ac31d8fc5a887a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/release/com.android.support-support-core-ui-24.2.1_fe3170bdb04b4fad96e18326032653ca17b4bfa7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_1a317f35b1b0b616ec1ab95ee0ac31d8fc5a887a.jar" />
+    </item>
+
+</items>

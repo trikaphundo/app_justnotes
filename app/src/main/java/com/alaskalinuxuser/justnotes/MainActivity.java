@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ListView theList;
     ArrayList<String> listNote;
     ArrayAdapter<String> addaptedAray;
-    Boolean askDelete;
+    Boolean askDelete, newNote;
     int toDelete;
     Set<String> stringSet;
     SharedPreferences myPrefs;
@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String c = "";
+                newNote = true;
 
                 Intent myIntent = new Intent(getApplicationContext(), writenote.class);
                 myIntent.putExtra("listNote", c);
@@ -135,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
                     // Converting the integer of "z" to a string with the name of the item clicked in the list.
                     String c = (String) listNote.get(z);
                     //Testing only, not needed//Log.i("WJH", "sending note." + c);
-
+                    toDelete = z;
+                    newNote = false;
 
                     Intent myIntent = new Intent(getApplicationContext(), writenote.class);
                     myIntent.putExtra("listNote", c);
@@ -208,6 +210,12 @@ public class MainActivity extends AppCompatActivity {
                String alistNote = data.getStringExtra("alistNote");
 
                 if (alistNote != null) {
+
+                    if (newNote == false) {
+
+                        listNote.remove(toDelete);
+
+                    }
 
                     listNote.add(alistNote);
 

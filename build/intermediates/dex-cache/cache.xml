@@ -70,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="d47c53d8d3d7ed2e972a7165dfc05f3f807e884d">
+        sha1="2130a14d86d07fc3768b5f6a9c884f8292ca1cc2">
         <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/JustNotes/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_fbcba0316d01485d1876fa570e4726584bf2b73b.jar" />
     </item>
     <item

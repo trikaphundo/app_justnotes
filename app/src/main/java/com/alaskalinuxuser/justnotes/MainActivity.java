@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,7 +32,13 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     int toDelete;
     Set<String> stringSet;
     SharedPreferences myPrefs;
+    String exportNotes, tempNotes, currentDateandTime, alistNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         // Defining the list view that I want by id.
         theList = (ListView) findViewById(R.id.theList);
 
-        // Defining the array of lattitude.
+        // Defining the array of notes.
         listNote = new ArrayList();
 
         // Defining an adapter, to adapt my array list to the correct format.
@@ -248,35 +256,9 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK){
 
                 // Then, go ahead and grab the note they just edited or wrote.
-               String alistNote = data.getStringExtra("alistNote");
+                alistNote = data.getStringExtra("alistNote");
 
-                // If it is not blank, then:
-                if (alistNote != null) {
-
-                    // If it is an edited, old note, then delete the duplicate (squashed that bug).
-                    if (newNote == false) {
-
-                        // Remember how we called that variable just before the intent, here we use it
-                        // to mark which old duplicate note to delete.
-                        listNote.remove(toDelete);
-
-                    }
-
-                    // So, add the note.
-                    listNote.add(alistNote);
-
-                    // Update the view to the user.
-                    addaptedAray.notifyDataSetChanged();
-
-                    // Save the messages so they can close the app and keep the messages.
-                    saveMessages();
-
-                } else {
-
-                    // Hey, the note was blank. Don't do anything.
-                    Log.i("WJH", "Note was null.");
-
-                }
+                makeNote();
 
             }
 
@@ -297,6 +279,38 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void makeNote () {
+
+        // If it is not blank, then:
+        if (alistNote != null) {
+
+            // If it is an edited, old note, then delete the duplicate (squashed that bug).
+            if (newNote == false) {
+
+                // Remember how we called that variable just before the intent, here we use it
+                // to mark which old duplicate note to delete.
+                listNote.remove(toDelete);
+
+            }
+
+            // So, add the note.
+            listNote.add(alistNote);
+
+            // Update the view to the user.
+            addaptedAray.notifyDataSetChanged();
+
+            // Save the messages so they can close the app and keep the messages.
+            saveMessages();
+
+        } else {
+
+            // Hey, the note was blank. Don't do anything.
+            Log.i("WJH", "Note was null.");
+
+        }
+
     }
 
     @Override // Call the "About" activity.
@@ -321,7 +335,199 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_import) {
+
+            // Okay, so we should back up the current notes.
+            writeToFile();/*
+            * The benefit to backing up first, is that we can do three things:
+            * #1. Ensure that they have read/write permissions, as the popups will tell them if
+            * they have an error about that while trying to back up.
+            * #2. Ensure the justnotes directory exists so we can tell them to put their import
+            * notes there.
+            * #3. We can actually back up what they have now, before we add to it.
+            */
+
+            // Of course, we need to tell people where to put their files for import.
+            // Here is what the popup will do.
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_info)
+                    .setTitle("Are you ready?")
+                    .setMessage(
+                            "Please put your justnotestxt files are in the justnotes folder, and rename the file 'import.justnotestxt' so we can import it.")
+                    .setPositiveButton("Yes, I have done that.", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            Log.i("WJH", "Clicked yes.");
+
+                                // Try this, in case it fails.
+                                try {
+
+                                    // Load the file location.
+                                    File file = new File(Environment.getExternalStorageDirectory()+File.separator+"justnotes"+File.separator+"import.justnotestxt");
+
+                                    // Get the length of the file.
+                                    int length = (int) file.length();
+
+                                    // Set your bytes to length.
+                                    byte[] bytes = new byte[length];
+
+                                    // Open an input stream.
+                                    FileInputStream in = new FileInputStream(file);
+
+                                    // And try to read it, when done, close it.
+                                    try {
+                                        in.read(bytes);
+                                    } finally {
+                                        in.close();
+                                    }
+
+                                    // Set those bytes to a string.
+                                    String contents = new String(bytes);
+
+                                    // Now we create an array and split it by the magic symbols we input when we exported it.
+                                    String[] splitString = contents.split("justnotestxt");
+
+                                    for (int j=0; j < splitString.length;j++) {
+
+                                        // Testing only.// Log.i("WJH", splitString[j]);
+
+                                        alistNote = splitString[j];
+                                        newNote = true;
+
+                                        makeNote();
+
+                                    }
+
+
+                                } catch (Exception e) {
+                                    Log.i("WJH", "Can not read file: " + e.toString());
+                                }
+
+                                //what to do.
+
+
+                        }
+                    })
+                    .setNegativeButton("No, I need to do that now.", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            Log.i("WJH", "Clicked no.");
+
+                        }
+                    })
+                    .show(); // Make sure you show your popup or it wont work very well!
+
+        }
+
+        // If we select to export...
+        if (id == R.id.action_export) {
+
+            // Call to write to the file.
+            writeToFile();
+
+
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    // To write the file.
+    public  void writeToFile() {
+
+        // First, let's get the date and time by setting the format and then pulling it.
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        currentDateandTime = sdf.format(new Date());
+
+        // Log it for a check.
+        // For testing only, not needed // Log.i("WJH", "Clicked export. " + currentDateandTime);
+
+        // Set our tempNote string to be the current date and time plus our homemade seperator.
+        tempNotes = currentDateandTime + " justnotestxt ";
+
+        // And set our export notes to the temp notes for our below loop.
+        exportNotes = tempNotes;
+
+        // We should try this, in case they try to export when there are no notes.
+        try {
+
+            // Start a for loop, based on the size of the notes.
+            for (int k = 0; k <= listNote.size(); k++) {
+
+                // Make our export notes equal the temp notes + the next note + our seperator.
+                exportNotes = tempNotes + listNote.get(k) + " justnotestxt ";
+
+                // And set temp notes to export notes for our loop to continue.
+                tempNotes = exportNotes;
+
+            }
+
+        } catch (Exception e) {
+
+            Log.i("WJH", "No notes to export.");
+
+        }
+
+        // Log it for a check.
+        // Testing only, not needed. // Log.i("WJH", exportNotes);
+
+        FileOutputStream fos = null;
+
+        // Try this in case it fails.
+        try {
+
+            File appDir = new File(Environment.getExternalStorageDirectory()+File.separator+"justnotes");
+
+            if(!appDir.exists() && !appDir.isDirectory())
+            {
+                // create empty directory
+                if (appDir.mkdirs())
+                {
+
+                    Log.i("WJH","App dir created");
+
+                }
+                else
+                {
+
+                    Toast.makeText(getApplicationContext(), "You do not have permission to create a directory.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            } else {
+
+                Log.i("WJH","App dir already exists");
+
+            }
+
+                        // Put our file together, we will name it the current date and time.
+            final File myFile = new File(appDir, currentDateandTime + ".justnotestxt");
+
+            // If it exists?
+            if (!myFile.exists())
+            {
+                // Make a new one.
+                myFile.createNewFile();
+            }
+
+            // Start our file output stream.
+            fos = new FileOutputStream(myFile);
+
+            // Put our export notes into it.
+            fos.write(exportNotes.getBytes());
+
+            // And close the stream.
+            fos.close();
+
+            // Catch any exception.
+        } catch (Exception eX) {
+
+            eX.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Error: Please check permissions....",
+                    Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     // How to save our notes and messages for later use by the user. E.G., when they close the app

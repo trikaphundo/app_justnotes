@@ -2,6 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.alaskalinuxuser.justnotes.MainActivity">
+    <item android:title="Export Notes"
+        android:id="@+id/action_export"
+        app:showAsAction="never" />
+
+    <item android:title="Import Notes"
+        android:id="@+id/action_import"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_about"
         android:title="About"

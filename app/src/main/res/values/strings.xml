@@ -20,4 +20,7 @@
     <string name="myGithub">https://github.com/alaskalinuxuser</string>
 
     <string name="myWebsite">https://thealaskalinuxuser.wordpress.com</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="soon">WIP: Settings options coming soon with color choices!</string>
+
 </resources>

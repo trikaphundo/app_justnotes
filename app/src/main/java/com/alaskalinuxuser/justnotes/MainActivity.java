@@ -20,18 +20,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Declare my variables.
     ListView theList;
-    ArrayList<String> listNote;
+    ArrayList<String> listNote, titleNote;
     ArrayAdapter<String> addaptedAray;
     Boolean askDelete, newNote;
     int toDelete;
     Set<String> stringSet;
     SharedPreferences myPrefs;
-    String exportNotes, tempNotes, currentDateandTime, alistNote;
+    String exportNotes, tempNotes, currentDateandTime, alistNote, subString, tempString;
+    static String colorChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +67,56 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        try {
+
+            // Let's import our preference for color.
+            colorChoice = myPrefs.getString("colorPref", null);
+
+        } catch (Exception a) {
+            // What to log if it fails.
+            Log.i("WJH", "No color pref.");
+
+        }
+
+        if (colorChoice == null) {
+
+            colorChoice = "gray";
+
+        }
+
         // Defining the list view that I want by id.
         theList = (ListView) findViewById(R.id.theList);
 
         // Defining the array of notes.
         listNote = new ArrayList();
+        titleNote = new ArrayList<>();
 
         // Defining an adapter, to adapt my array list to the correct format.
-        addaptedAray = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNote);
+        addaptedAray = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titleNote) {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+
+                if (colorChoice == "gray") {
+
+                    /*YOUR CHOICE OF COLOR*/
+                    textView.setTextColor(Color.GRAY);
+
+                } else if (colorChoice == "blue") {
+
+                    /*YOUR CHOICE OF COLOR*/
+                    textView.setTextColor(Color.BLUE);
+
+                }
+
+                return view;
+
+            }
+        };
+
 
         // Using the adapter to adapt my array list to the defined list view that I declared already.
         theList.setAdapter(addaptedAray);
@@ -76,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         // Define ask delete as false, so I can click on things.
         askDelete = false;
 
-        // Set up my string set as new and make sure it is clear.
+        // Set up my string and title set as new and make sure it is clear.
         stringSet = new HashSet<String>();
         stringSet.clear();
 
@@ -101,9 +149,13 @@ public class MainActivity extends AppCompatActivity {
         // So, if the notes got imported, are there any notes?
         if (stringSet.size() > 0) {
 
+            Log.i("WJH", stringSet.toString());
+
             // If so, let's put them in our table so the user can use them.
             listNote.addAll(stringSet);
             //Testing only, not needed//Log.i("WJH", "Added saved notes.");
+
+            setTitleNote();
 
         } else {
 
@@ -113,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // The FAB is the clickable button at the bottom of the screen. In this case, the add note button.
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAdd);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,19 +185,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        // So, since we are still in "on create" for opening the app, we can check to see if we have
-        // any previous notes.
-        if (listNote.size() <= 1) {
-
-            // If we don't have any notes, then we can add these instructions to the array list.
-            listNote.add("Welcome to the note app! You can save new notes and delete old ones. I hope this is useful." +
-                    "You can delete this note from the main menu with a long press if you want. " +
-                    "Just click back to go back to the main menu without saving, or press the save button to keep your note.");
-
-
-            // Testing only //Log.i("WJH", "Adding note to blank list.");// Testing only //
-        }
 
         // Setting up a listener to "listen" for me to click on something in the list.
         theList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -222,8 +261,11 @@ public class MainActivity extends AppCompatActivity {
                             // since we said yes, delete that note by removing it from our table.
                             listNote.remove(toDelete);
 
+                            // And we should update our note titles.
+                            setTitleNote();
+
                             // Update the view to the user.
-                            addaptedAray.notifyDataSetChanged();
+                            //addaptedAray.notifyDataSetChanged();
 
                             // Now let's make sure our notes are saved in the event they close the app.
                             saveMessages();
@@ -298,8 +340,10 @@ public class MainActivity extends AppCompatActivity {
             // So, add the note.
             listNote.add(alistNote);
 
+            // And we should update our note titles again.
+            setTitleNote();
             // Update the view to the user.
-            addaptedAray.notifyDataSetChanged();
+            // addaptedAray.notifyDataSetChanged();
 
             // Save the messages so they can close the app and keep the messages.
             saveMessages();
@@ -321,8 +365,19 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
+        if (id == R.id.action_settings) {
 
+            // Call an intent to go to the settings screen.
+            // First you define it.
+            Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            // Now you call it.
+            startActivity(settingIntent);
+
+            return true;
+        }
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_about) {
 
             // Of course, we need to tell people about our open source app, the github link for source, etc.
 
@@ -335,6 +390,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        // Import our notes.
         if (id == R.id.action_import) {
 
             // Okay, so we should back up the current notes.
@@ -427,6 +483,14 @@ public class MainActivity extends AppCompatActivity {
             // Call to write to the file.
             writeToFile();
 
+
+        }
+
+        if (id == R.id.action_help) {
+
+            Toast.makeText(getApplicationContext(),
+                    "Click the + to add a note. Long press a note to delete it.",
+                    Toast.LENGTH_LONG).show();
 
         }
 
@@ -550,6 +614,52 @@ public class MainActivity extends AppCompatActivity {
 
         // Just a note for the logs that it worked.
         //Testing only, not needed//Log.i("WJH", "myprefs saved.");
+
+    }
+
+    public void setTitleNote () {
+
+        // We will clear our title notes to make sure that they match the list notes.
+        titleNote.clear();
+
+        // So, for each item in our list notes we will:
+        for (int k = 0; k <= stringSet.size(); k++) {
+
+            try {
+                // Make a temporary string of the note.
+                tempString = listNote.get(k);
+
+                // Log it for testing.
+                Log.i("WJH", tempString);
+
+                // See how long it is.
+                if (tempString.length() < 25) {
+
+                    // Since it is so short a note, just use the whole thing for the title.
+                    subString = tempString;
+
+                } else {
+
+                    // Set the subString to the first 25 characters for a shorter title.
+                    subString = tempString.substring(0, 25);
+
+                }
+
+                // Let's log our substring.
+                Log.i("WJH", subString);
+
+                // Let's add that substring as our title for each note.
+                titleNote.add(subString);
+
+            } catch (Exception e) {
+
+                Log.i("WJH", "Exception " + e);
+            }
+
+        }
+
+        // And when we are done, let's notify our adapter of the status change.
+        addaptedAray.notifyDataSetChanged();
 
     }
 }

@@ -20,11 +20,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
@@ -56,31 +56,40 @@ public class MainActivity extends AppCompatActivity {
     Boolean askDelete, newNote;
     int toDelete;
     Set<String> stringSet;
-    SharedPreferences myPrefs;
+    static SharedPreferences myPrefs;
     String exportNotes, tempNotes, currentDateandTime, alistNote, subString, tempString;
-    static String colorChoice;
+    static int textColorChoice, colorChoice, titleChoice, fabColorChoice;
+    FloatingActionButton fab;
+    Layout mainLayout;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Set up my shared preferences, where I am hiding the notes.
+        myPrefs = this.getSharedPreferences("com.alaskalinuxuser.justnotes", Context.MODE_PRIVATE);
 
         try {
 
-            // Let's import our preference for color.
-            colorChoice = myPrefs.getString("colorPref", null);
+            // Let's import our preference for colors and texts...
+            colorChoice = Integer.parseInt(myPrefs.getString("colorPref", null));
+            textColorChoice = Integer.parseInt(myPrefs.getString("textColorPref", null));
+            fabColorChoice = Integer.parseInt(myPrefs.getString("fabColorPref", null));
+            titleChoice = Integer.parseInt(myPrefs.getString("titlePref", null));
+
+            Log.i("WJH", String.valueOf(colorChoice));
+            Log.i("WJH", String.valueOf(textColorChoice));
+            Log.i("WJH", String.valueOf(fabColorChoice));
+            Log.i("WJH", String.valueOf(titleChoice));
 
         } catch (Exception a) {
+
             // What to log if it fails.
-            Log.i("WJH", "No color pref.");
-
-        }
-
-        if (colorChoice == null) {
-
-            colorChoice = "gray";
+            Log.i("WJH", "No pref." + a);
 
         }
 
@@ -100,15 +109,35 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView textView = (TextView) view.findViewById(android.R.id.text1);
 
-                if (colorChoice == "gray") {
+                switch (textColorChoice) {
 
-                    /*YOUR CHOICE OF COLOR*/
-                    textView.setTextColor(Color.GRAY);
+                    case 0:
+                       textView.setTextColor(Color.GRAY);
+                        break;
 
-                } else if (colorChoice == "blue") {
+                    case 1:
+                        textView.setTextColor(Color.RED);
+                        break;
 
-                    /*YOUR CHOICE OF COLOR*/
-                    textView.setTextColor(Color.BLUE);
+                    case 2:
+                        textView.setTextColor(Color.GREEN);
+                        break;
+
+                    case 3:
+                        textView.setTextColor(Color.BLUE);
+                        break;
+
+                    case 4:
+                        textView.setTextColor(Color.BLACK);
+                        break;
+
+                    case 5:
+                        textView.setTextColor(Color.YELLOW);
+                        break;
+
+                    case 6:
+                        textView.setTextColor(Color.MAGENTA);
+                        break;
 
                 }
 
@@ -128,9 +157,6 @@ public class MainActivity extends AppCompatActivity {
         stringSet = new HashSet<String>();
         stringSet.clear();
 
-        // Set up my shared preferences, where I am hiding the notes.
-        myPrefs = this.getSharedPreferences("com.alaskalinuxuser.justnotes", Context.MODE_PRIVATE);
-
         // Wrap this in try in case it fails.
         try {
 
@@ -149,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         // So, if the notes got imported, are there any notes?
         if (stringSet.size() > 0) {
 
-            Log.i("WJH", stringSet.toString());
+            // Testing only // Log.i("WJH", stringSet.toString());
 
             // If so, let's put them in our table so the user can use them.
             listNote.addAll(stringSet);
@@ -165,8 +191,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // The FAB is the clickable button at the bottom of the screen. In this case, the add note button.
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAdd);
+        fab = (FloatingActionButton) findViewById(R.id.fabAdd);
         fab.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
 
@@ -244,6 +272,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Okay, now let's set our colors.
+        selectColors();
+
     }
 
         // Okay, so here we build the popup to ask if we really want to delete that.
@@ -308,7 +339,39 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_CANCELED) {
 
                 // Just log that it didn't return a result.
-                Log.i("WJH", "There was no result.");
+                Log.i("WJH", "There was no  one result.");
+
+            }
+
+        } else if (requestCode == 2) { // From settings, and if it was OK, not a fail.
+            if(resultCode == Activity.RESULT_OK){
+
+
+                colorChoice = Integer.parseInt(data.getStringExtra("colorChoice"));
+                textColorChoice = Integer.parseInt(data.getStringExtra("textColorChoice"));
+                fabColorChoice = Integer.parseInt(data.getStringExtra("fabColorChoice"));
+                titleChoice = Integer.parseInt(data.getStringExtra("titleChoice"));
+
+                Log.i("WJH", String.valueOf(colorChoice));
+                Log.i("WJH", String.valueOf(textColorChoice));
+                Log.i("WJH", String.valueOf(fabColorChoice));
+                Log.i("WJH", String.valueOf(titleChoice));
+
+                //And let's save our new preferences.
+                myPrefs.edit ().putString("colorPref", String.valueOf(colorChoice)).apply();
+                myPrefs.edit ().putString("textColorPref", String.valueOf(textColorChoice)).apply();
+                myPrefs.edit ().putString("fabColorPref", String.valueOf(fabColorChoice)).apply();
+                myPrefs.edit ().putString("titlePref", String.valueOf(titleChoice)).apply();
+
+                selectColors();
+
+            }
+
+            // If the result wan not okay...
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+                // Just log that it didn't return a result.
+                Log.i("WJH", "There was no two result.");
 
             }
         }
@@ -371,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
             // First you define it.
             Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
             // Now you call it.
-            startActivity(settingIntent);
+            startActivityForResult(settingIntent, 2);
 
             return true;
         }
@@ -414,7 +477,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            Log.i("WJH", "Clicked yes.");
+                            // Testing only // Log.i("WJH", "Clicked yes.");
 
                                 // Try this, in case it fails.
                                 try {
@@ -630,23 +693,32 @@ public class MainActivity extends AppCompatActivity {
                 tempString = listNote.get(k);
 
                 // Log it for testing.
-                Log.i("WJH", tempString);
+                //Log.i("WJH", tempString);
+
+                // If the title choice length is 0, then:
+                if (titleChoice == 0) {
+
+                    // Set it to 250 instead.
+                    titleChoice = 250;
+
+                }
 
                 // See how long it is.
-                if (tempString.length() < 25) {
+                if (tempString.length() < titleChoice) {
 
                     // Since it is so short a note, just use the whole thing for the title.
                     subString = tempString;
 
                 } else {
 
-                    // Set the subString to the first 25 characters for a shorter title.
-                    subString = tempString.substring(0, 25);
+                    // Set the subString to the first characters for a shorter title. Limited by
+                    // the user preferences for title choice.
+                    subString = tempString.substring(0, titleChoice);
 
                 }
 
                 // Let's log our substring.
-                Log.i("WJH", subString);
+                // Testing only // Log.i("WJH", subString);
 
                 // Let's add that substring as our title for each note.
                 titleNote.add(subString);
@@ -660,6 +732,88 @@ public class MainActivity extends AppCompatActivity {
 
         // And when we are done, let's notify our adapter of the status change.
         addaptedAray.notifyDataSetChanged();
+
+    }
+
+    // My method to set all the colors.
+    public void selectColors () {
+
+        // Set the title bar color.
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.YELLOW);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
+
+        // Set the fab color.
+        switch (fabColorChoice) {
+
+            case 0:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+            case 1:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
+                break;
+
+            case 6:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                break;
+
+        }
+
+        // And set the title notes to update it's colors.
+        setTitleNote();
 
     }
 }

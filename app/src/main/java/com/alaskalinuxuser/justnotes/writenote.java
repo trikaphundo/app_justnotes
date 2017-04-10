@@ -16,6 +16,7 @@ package com.alaskalinuxuser.justnotes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import static com.alaskalinuxuser.justnotes.MainActivity.colorChoice;
+import static com.alaskalinuxuser.justnotes.MainActivity.textColorChoice;
 
 public class writenote extends AppCompatActivity {
 
@@ -37,6 +41,78 @@ public class writenote extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         multiView = (EditText)findViewById(R.id.multiTextView);
+
+        switch (textColorChoice) {
+
+            case 0:
+                multiView.setTextColor(Color.GRAY);
+                break;
+
+            case 1:
+                multiView.setTextColor(Color.RED);
+                break;
+
+            case 2:
+                multiView.setTextColor(Color.GREEN);
+                break;
+
+            case 3:
+                multiView.setTextColor(Color.BLUE);
+                break;
+
+            case 4:
+                multiView.setTextColor(Color.BLACK);
+                break;
+
+            case 5:
+                multiView.setTextColor(Color.YELLOW);
+                break;
+
+            case 6:
+                multiView.setTextColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                multiView.setTextColor(Color.CYAN);
+                break;
+
+        }
+
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.YELLOW);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
 
 
         Intent i = getIntent();

@@ -31,7 +31,6 @@ import static com.alaskalinuxuser.justnotes.MainActivity.colorChoice;
 import static com.alaskalinuxuser.justnotes.MainActivity.fabColorChoice;
 import static com.alaskalinuxuser.justnotes.MainActivity.textColorChoice;
 import static com.alaskalinuxuser.justnotes.MainActivity.titleChoice;
-import static com.alaskalinuxuser.justnotes.MainActivity.myPrefs;
 
 public class SettingsActivity extends AppCompatActivity {
 

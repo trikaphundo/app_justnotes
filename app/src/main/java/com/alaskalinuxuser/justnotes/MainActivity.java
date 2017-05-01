@@ -343,37 +343,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        } else if (requestCode == 2) { // From settings, and if it was OK, not a fail.
-            if(resultCode == Activity.RESULT_OK){
-
-
-                colorChoice = Integer.parseInt(data.getStringExtra("colorChoice"));
-                textColorChoice = Integer.parseInt(data.getStringExtra("textColorChoice"));
-                fabColorChoice = Integer.parseInt(data.getStringExtra("fabColorChoice"));
-                titleChoice = Integer.parseInt(data.getStringExtra("titleChoice"));
-
-                Log.i("WJH", String.valueOf(colorChoice));
-                Log.i("WJH", String.valueOf(textColorChoice));
-                Log.i("WJH", String.valueOf(fabColorChoice));
-                Log.i("WJH", String.valueOf(titleChoice));
-
-                //And let's save our new preferences.
-                myPrefs.edit ().putString("colorPref", String.valueOf(colorChoice)).apply();
-                myPrefs.edit ().putString("textColorPref", String.valueOf(textColorChoice)).apply();
-                myPrefs.edit ().putString("fabColorPref", String.valueOf(fabColorChoice)).apply();
-                myPrefs.edit ().putString("titlePref", String.valueOf(titleChoice)).apply();
-
-                selectColors();
-
-            }
-
-            // If the result wan not okay...
-            if (resultCode == Activity.RESULT_CANCELED) {
-
-                // Just log that it didn't return a result.
-                Log.i("WJH", "There was no two result.");
-
-            }
         }
     }//onActivityResult
 
@@ -472,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
                     .setIcon(android.R.drawable.ic_dialog_info)
                     .setTitle("Are you ready?")
                     .setMessage(
-                            "Please put your justnotestxt files are in the justnotes folder, and rename the file 'import.justnotestxt' so we can import it.")
+                            "Please put your justnotestxt files are in the justnotes folder, and rename the file 'import.txt' so we can import it.")
                     .setPositiveButton("Yes, I have done that.", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -483,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
                                 try {
 
                                     // Load the file location.
-                                    File file = new File(Environment.getExternalStorageDirectory()+File.separator+"justnotes"+File.separator+"import.justnotestxt");
+                                    File file = new File(Environment.getExternalStorageDirectory()+File.separator+"justnotes"+File.separator+"import.txt");
 
                                     // Get the length of the file.
                                     int length = (int) file.length();
@@ -629,7 +598,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
                         // Put our file together, we will name it the current date and time.
-            final File myFile = new File(appDir, currentDateandTime + ".justnotestxt");
+            final File myFile = new File(appDir, currentDateandTime + ".txt");
 
             // If it exists?
             if (!myFile.exists())

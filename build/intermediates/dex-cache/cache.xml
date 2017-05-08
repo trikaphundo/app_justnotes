@@ -129,15 +129,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/alaskalinuxuser/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha9/constraint-layout-solver-1.0.0-alpha9.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="6a908fd0803cc5f65b007101002aec06dc7544da">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustNotes/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.0-alpha9_e6227ec2af24dabe88f475e7560488c11bff0d7b.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/alaskalinuxuser/AndroidStudioProjects/released/JustNotes/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="false"
         optimize="true"
@@ -153,15 +144,6 @@
         revision="24.0.3"
         sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
         <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_f4a38f153aa713376b62b6d3492940f62856d2cb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/AndroidStudioProjects/released/JustNotes/app/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-alpha9/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="f2b64f6a762f61a2379d6a79af03e2ee56eefe0b">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustNotes/app/build/intermediates/pre-dexed/debug/com.android.support.constraint-constraint-layout-1.0.0-alpha9_3eb4d62adbd15bb0d423691c193fd41e8bbc553a.jar" />
     </item>
     <item
         is-multidex="false"

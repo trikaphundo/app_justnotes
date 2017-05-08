@@ -343,6 +343,37 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }  else if (requestCode == 2) { // From settings, and if it was OK, not a fail.
+            if (resultCode == Activity.RESULT_OK) {
+
+
+                colorChoice = Integer.parseInt(data.getStringExtra("colorChoice"));
+                textColorChoice = Integer.parseInt(data.getStringExtra("textColorChoice"));
+                fabColorChoice = Integer.parseInt(data.getStringExtra("fabColorChoice"));
+                titleChoice = Integer.parseInt(data.getStringExtra("titleChoice"));
+
+                Log.i("WJH", String.valueOf(colorChoice));
+                Log.i("WJH", String.valueOf(textColorChoice));
+                Log.i("WJH", String.valueOf(fabColorChoice));
+                Log.i("WJH", String.valueOf(titleChoice));
+
+                //And let's save our new preferences.
+                myPrefs.edit().putString("colorPref", String.valueOf(colorChoice)).apply();
+                myPrefs.edit().putString("textColorPref", String.valueOf(textColorChoice)).apply();
+                myPrefs.edit().putString("fabColorPref", String.valueOf(fabColorChoice)).apply();
+                myPrefs.edit().putString("titlePref", String.valueOf(titleChoice)).apply();
+
+                selectColors();
+
+            }
+
+            // If the result wan not okay...
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+                // Just log that it didn't return a result.
+                Log.i("WJH", "There was no two result.");
+
+            }
         }
     }//onActivityResult
 
@@ -615,6 +646,12 @@ public class MainActivity extends AppCompatActivity {
 
             // And close the stream.
             fos.close();
+
+            // Log it worked.
+            // Log.i("WJH", "Exported notes.");
+
+            // Tell the user it worked.
+            Toast.makeText(getApplicationContext(), "Exported file!", Toast.LENGTH_SHORT).show();
 
             // Catch any exception.
         } catch (Exception eX) {
